@@ -15,7 +15,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <img src={logo} alt="Croydon PAT Logo" className="h-12 md:h-14" />
+          <img src={logo} alt="Croydon PAT Logo" className="h-18 md:h-[5.25rem]" />
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
