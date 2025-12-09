@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle2, Clock } from "lucide-react";
+import heroBackground from "@/assets/hero-background.jpeg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -7,7 +8,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-gradient py-20 md:py-32 relative overflow-hidden">
+    <section 
+      className="py-20 md:py-32 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${heroBackground})` }}
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 border-2 border-primary rounded-full" />
