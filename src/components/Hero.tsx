@@ -18,9 +18,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6 font-heading animate-fade-up">
-            Professional PAT Testing in <span className="text-primary">Croydon</span> & Surrounding Areas
+            Professional PAT Testing in <span className="text-primary">Croydon</span> and Surrounding Areas
           </h1>
-          <p className="text-lg md:text-xl text-secondary/90 mb-8 animate-fade-up animation-delay-100">
+          <p className="text-lg md:text-xl text-primary/90 mb-8 animate-fade-up animation-delay-100">
             Keep your workplace safe and compliant with our expert Portable Appliance Testing services. Fast, reliable, and competitively priced.
           </p>
           
@@ -49,7 +49,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center justify-center gap-3 bg-secondary/10 rounded-lg p-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
-              <span className="text-secondary font-medium">Certified Engineers</span>
+              <span className="text-secondary font-medium">Certified PAT Tester</span>
             </div>
             <div className="flex items-center justify-center gap-3 bg-secondary/10 rounded-lg p-4">
               <Clock className="w-6 h-6 text-primary" />
