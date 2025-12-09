@@ -12,8 +12,8 @@ const Hero = () => {
       className="py-20 md:py-32 relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${heroBackground})` }}
     >
-      {/* Dark overlay with white fade at edges */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-black/60 to-white" />
+      {/* White fade at edges */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
