@@ -17,10 +17,10 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 font-heading animate-fade-up">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6 font-heading animate-fade-up">
             Professional PAT Testing in <span className="text-primary">Croydon</span> & Surrounding Areas
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-fade-up animation-delay-100">
+          <p className="text-lg md:text-xl text-secondary/90 mb-8 animate-fade-up animation-delay-100">
             Keep your workplace safe and compliant with our expert Portable Appliance Testing services. Fast, reliable, and competitively priced.
           </p>
           
@@ -43,17 +43,17 @@ const Hero = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-up animation-delay-300">
-            <div className="flex items-center justify-center gap-3 bg-primary-foreground/10 rounded-lg p-4">
+            <div className="flex items-center justify-center gap-3 bg-secondary/10 rounded-lg p-4">
               <Shield className="w-6 h-6 text-primary" />
-              <span className="text-primary-foreground font-medium">Fully Insured</span>
+              <span className="text-secondary font-medium">Fully Insured</span>
             </div>
-            <div className="flex items-center justify-center gap-3 bg-primary-foreground/10 rounded-lg p-4">
+            <div className="flex items-center justify-center gap-3 bg-secondary/10 rounded-lg p-4">
               <CheckCircle2 className="w-6 h-6 text-primary" />
-              <span className="text-primary-foreground font-medium">Certified Engineers</span>
+              <span className="text-secondary font-medium">Certified Engineers</span>
             </div>
-            <div className="flex items-center justify-center gap-3 bg-primary-foreground/10 rounded-lg p-4">
+            <div className="flex items-center justify-center gap-3 bg-secondary/10 rounded-lg p-4">
               <Clock className="w-6 h-6 text-primary" />
-              <span className="text-primary-foreground font-medium">Fast Turnaround</span>
+              <span className="text-secondary font-medium">Fast Turnaround</span>
             </div>
           </div>
         </div>
