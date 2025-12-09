@@ -12,15 +12,16 @@ const Hero = () => {
       className="py-20 md:py-32 relative overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${heroBackground})` }}
     >
-      {/* White fade at edges */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+      {/* Warm tint overlay with white fade at edges */}
+      <div className="absolute inset-0 bg-amber-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/80" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6 font-heading animate-fade-up">
             Professional PAT Testing in <span className="text-primary">Croydon</span> and Surrounding Areas
           </h1>
-          <p className="text-lg md:text-xl text-primary/90 mb-8 animate-fade-up animation-delay-100">
+          <p className="text-lg md:text-xl text-secondary/80 mb-8 animate-fade-up animation-delay-100">
             Keep your workplace safe and compliant with our expert Portable Appliance Testing services. Fast, reliable, and competitively priced.
           </p>
           
