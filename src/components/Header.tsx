@@ -34,9 +34,9 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:02012345678" className="flex items-center gap-2 text-secondary font-semibold">
+            <a href="tel:07845468030" className="flex items-center gap-2 text-secondary font-semibold">
               <Phone className="w-4 h-4" />
-              020 1234 5678
+              07845 468030
             </a>
             <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
               Get a Quote
