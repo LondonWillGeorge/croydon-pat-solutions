@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle2, Clock } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpeg";
+import heroBackground from "@/assets/Will_PAT_meter_photo_adobe_adjusted.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
