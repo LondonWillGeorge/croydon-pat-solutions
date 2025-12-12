@@ -64,7 +64,7 @@ const Hero = () => {
           {/* Warm tint overlay */}
           <div className="absolute inset-0 bg-amber-900/20" />
           {/* Left edge fade to blend with text section - desktop only */}
-          <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent w-32" />
+          <div className="hidden lg:block absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-background via-transparent to-transparent" />
         </div>
       </div>
     </section>
