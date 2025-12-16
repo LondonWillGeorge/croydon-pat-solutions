@@ -13,6 +13,7 @@ const ContactForm = () => {
     email: "",
     phone: "",
     company: "",
+    discountCode: "",
     message: ""
   });
 
@@ -20,15 +21,26 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Build email body
+    const emailBody = `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Company: ${formData.company || 'Not provided'}
+Discount Code: ${formData.discountCode}
+
+Message:
+${formData.message}`;
+
+    // Open mailto link
+    const mailtoLink = `mailto:will@croydonpat.co.uk?subject=${encodeURIComponent(`PAT Testing Enquiry from ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
 
     toast({
-      title: "Message sent!",
-      description: "Thank you for your enquiry. We'll be in touch shortly.",
+      title: "Email client opened!",
+      description: "Please send the email from your email client.",
     });
 
-    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", company: "", discountCode: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -105,6 +117,19 @@ const ContactForm = () => {
                     className="bg-background"
                   />
                 </div>
+              </div>
+              <div>
+                <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
+                  Discount Code *
+                </label>
+                <Input
+                  id="discountCode"
+                  required
+                  value={formData.discountCode}
+                  onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
+                  placeholder="Enter your discount code"
+                  className="bg-background"
+                />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
