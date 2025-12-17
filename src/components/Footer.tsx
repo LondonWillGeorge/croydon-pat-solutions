@@ -4,6 +4,16 @@ import { Phone, Mail } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-secondary py-12">
       <div className="container mx-auto px-4">
@@ -19,24 +29,24 @@ const Footer = () => {
             <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+                <button onClick={() => scrollToSection("services")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                   Our Services
                 </button>
               </li>
               <li>
-                <button onClick={() => document.getElementById("areas")?.scrollIntoView({ behavior: "smooth" })} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+                <button onClick={() => scrollToSection("areas")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                   Areas Covered
                 </button>
               </li>
               <li>
-                <button onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+                <button onClick={() => scrollToSection("about")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                   About PAT Testing
                 </button>
               </li>
               <li>
-                <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+                <a href="mailto:will@croydonpat.co.uk" className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                   Get a Quote
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -44,13 +54,13 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Contact Us</h4>
             <div className="space-y-3">
-              <a href="tel:02012345678" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+              <a href="tel:07845468030" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                 <Phone className="w-4 h-4" />
-                020 1234 5678
+                07845 468030
               </a>
-              <a href="mailto:info@croydonpat.co.uk" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
+              <a href="mailto:will@croydonpat.co.uk" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                 <Mail className="w-4 h-4" />
-                info@croydonpat.co.uk
+                will@croydonpat.co.uk
               </a>
             </div>
           </div>
