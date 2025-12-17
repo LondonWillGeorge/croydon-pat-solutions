@@ -7,7 +7,18 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const openContactEmail = () => {
+    window.location.href = "mailto:will@croydonpat.co.uk";
     setMobileMenuOpen(false);
   };
 
@@ -28,7 +39,7 @@ const Header = () => {
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">
+            <button onClick={openContactEmail} className="text-foreground hover:text-primary transition-colors font-medium">
               Contact
             </button>
           </nav>
@@ -64,7 +75,7 @@ const Header = () => {
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
+            <button onClick={openContactEmail} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               Contact
             </button>
             <a href="tel:07845468030" className="flex items-center gap-2 text-secondary font-semibold">
