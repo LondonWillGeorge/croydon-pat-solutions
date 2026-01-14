@@ -126,7 +126,7 @@ ${formData.message}`;
                   id="discountCode"
                   value={formData.discountCode}
                   onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
-                  placeholder="Enter your discount code"
+                  placeholder="If you have one, enter your discount code"
                   className="bg-background"
                 />
               </div>
@@ -173,8 +173,8 @@ ${formData.message}`;
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground">Phone</h4>
-                    <a href="tel:02012345678" className="text-primary hover:underline text-lg font-semibold">
-                      020 1234 5678
+                    <a href="tel:07845 468030" className="text-primary hover:underline text-lg font-semibold">
+                      07845 468030
                     </a>
                   </div>
                 </div>
@@ -184,8 +184,8 @@ ${formData.message}`;
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground">Email</h4>
-                    <a href="mailto:info@croydonpat.co.uk" className="text-primary hover:underline text-lg">
-                      info@croydonpat.co.uk
+                    <a href="mailto:will@croydonpat.co.uk" className="text-primary hover:underline text-lg">
+                      will@croydonpat.co.uk
                     </a>
                   </div>
                 </div>
