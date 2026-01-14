@@ -120,11 +120,10 @@ ${formData.message}`;
               </div>
               <div>
                 <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
-                  Discount Code *
+                  Discount Code
                 </label>
                 <Input
                   id="discountCode"
-                  required
                   value={formData.discountCode}
                   onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
                   placeholder="Enter your discount code"
