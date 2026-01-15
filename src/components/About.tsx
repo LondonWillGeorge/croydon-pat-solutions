@@ -11,7 +11,7 @@ const features = [
   {
     icon: Award,
     title: "Professionally Certified",
-    description: "Fully qualified engineers with industry-recognized certifications.",
+    description: "Click to view - I have been trained by a former member of UK Standards Committee.",
     hasPdf: true,
     pdfPath: "/documents/certification.pdf",
     dialogTitle: "Professional Certification",
@@ -19,7 +19,7 @@ const features = [
   {
     icon: Shield,
     title: "Professionally Insured",
-    description: "Comprehensive public liability insurance for your peace of mind.",
+    description: "Click to view - Comprehensive public liability insurance for your peace of mind.",
     hasPdf: true,
     pdfPath: "/documents/insurance.pdf",
     dialogTitle: "Insurance Certificate",
@@ -27,7 +27,7 @@ const features = [
   {
     icon: ThumbsUp,
     title: "No Hidden Costs",
-    description: "Transparent pricing with no call-out fees. You only pay for what you need."
+    description: "Transparent pricing. You only pay for what you need."
   },
   {
     icon: PoundSterling,
@@ -112,8 +112,9 @@ const About = () => {
               <ul className="list-disc list-inside space-y-2 ml-2">
                 <li>Computers and monitors</li>
                 <li>Kettles and microwaves</li>
-                <li>Power tools and extension leads</li>
+                <li>Extension leads</li>
                 <li>Printers and photocopiers</li>
+                <li>Power tools</li>
                 <li>Any portable electrical device</li>
               </ul>
             </div>
