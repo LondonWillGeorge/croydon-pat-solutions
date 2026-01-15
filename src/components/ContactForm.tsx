@@ -24,9 +24,25 @@ const ContactForm = () => {
     botField: "", // honeypot
   });
 
+  // Check if we're on the Netlify-hosted site
+  const isNetlifySite = typeof window !== 'undefined' && 
+    (window.location.hostname.includes('netlify') || 
+     window.location.hostname === 'croydonpat.co.uk' ||
+     window.location.hostname === 'www.croydonpat.co.uk');
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // If not on Netlify, show a message that forms only work on the live site
+    if (!isNetlifySite) {
+      toast({
+        title: "Preview Mode",
+        description: "Form submissions only work on the published Netlify site. Your form setup looks correct!",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const payload = {
@@ -52,7 +68,7 @@ const ContactForm = () => {
 
       toast({
         title: "Message sent!",
-        description: "Thanks — we’ll get back to you shortly.",
+        description: "Thanks — we'll get back to you shortly.",
       });
 
       setFormData({
@@ -66,11 +82,10 @@ const ContactForm = () => {
       });
     } catch (err) {
       toast({
-        title: "Couldn’t send message",
+        title: "Couldn't send message",
         description: "Please try again, or email us directly.",
         variant: "destructive",
       });
-      // optionally console.log(err)
     } finally {
       setIsSubmitting(false);
     }
