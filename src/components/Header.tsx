@@ -12,10 +12,10 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4 py-4">
+    <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border overflow-x-hidden">
+      <div className="container mx-auto px-4 py-4 max-w-full">
         <div className="flex items-center justify-between">
-          <img src={logo} alt="Croydon PAT Logo" className="h-18 md:h-[5.25rem]" />
+          <img src={logo} alt="Croydon PAT Logo" className="h-14 sm:h-16 md:h-[5.25rem]" />
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -28,15 +28,14 @@ const Header = () => {
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">
-              Contact
+            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">              Contact
             </button>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:02012345678" className="flex items-center gap-2 text-secondary font-semibold">
+            <a href="tel:07845468030" className="flex items-center gap-2 text-secondary font-semibold">
               <Phone className="w-4 h-4" />
-              020 1234 5678
+              07845 468030
             </a>
             <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
               Get a Quote
@@ -64,12 +63,12 @@ const Header = () => {
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
+            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">           
               Contact
             </button>
-            <a href="tel:02012345678" className="flex items-center gap-2 text-secondary font-semibold">
+            <a href="tel:07845468030" className="flex items-center gap-2 text-secondary font-semibold">
               <Phone className="w-4 h-4" />
-              020 1234 5678
+              07845 468030
             </a>
             <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold w-full">
               Get a Quote

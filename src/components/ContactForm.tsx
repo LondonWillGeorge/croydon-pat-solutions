@@ -5,6 +5,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
+function encode(data: Record<string, string>) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key] ?? ""))
+    .join("&");
+}
+
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,43 +19,113 @@ const ContactForm = () => {
     email: "",
     phone: "",
     company: "",
-    message: ""
+    discountCode: "",
+    message: "",
+    botField: "", // honeypot
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Check if we're on the Netlify-hosted site
+  const isNetlifySite = typeof window !== 'undefined' && 
+    (window.location.hostname.includes('netlify') || 
+     window.location.hostname === 'croydonpat.co.uk' ||
+     window.location.hostname === 'www.croydonpat.co.uk');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // If not on Netlify, show a message that forms only work on the live site
+    if (!isNetlifySite) {
+      toast({
+        title: "Preview Mode",
+        description: "Form submissions only work on the published Netlify site. Your form setup looks correct!",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your enquiry. We'll be in touch shortly.",
-    });
+    try {
+      const payload = {
+        "form-name": "contact",
+        "bot-field": formData.botField,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        discountCode: formData.discountCode,
+        message: formData.message,
+      };
 
-    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
-    setIsSubmitting(false);
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Form submit failed: ${res.status}`);
+      }
+
+      toast({
+        title: "Message sent!",
+        description: "Thanks — we'll get back to you shortly.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        discountCode: "",
+        message: "",
+        botField: "",
+      });
+    } catch (err) {
+      toast({
+        title: "Couldn't send message",
+        description: "Please try again, or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 font-heading">
-            Get in Touch
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Request a free quote or ask us any questions about our PAT testing services
-          </p>
-        </div>
+        {/* ...your existing layout... */}
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Left column - Form */}
           <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
             <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
               Send us a message
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
+
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              className="space-y-5"
+            >
+              {/* Required for Netlify forms */}
+              <input type="hidden" name="form-name" value="contact" />
+
+              {/* Honeypot (hidden from humans) */}
+              <p className="hidden">
+                <label>
+                  Don't fill this out:{" "}
+                  <input
+                    name="bot-field"
+                    value={formData.botField}
+                    onChange={(e) => setFormData({ ...formData, botField: e.target.value })}
+                  />
+                </label>
+              </p>
+
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -57,6 +133,7 @@ const ContactForm = () => {
                   </label>
                   <Input
                     id="name"
+                    name="name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -64,12 +141,14 @@ const ContactForm = () => {
                     className="bg-background"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                     Email Address *
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     required
                     value={formData.email}
@@ -79,6 +158,7 @@ const ContactForm = () => {
                   />
                 </div>
               </div>
+
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
@@ -86,6 +166,7 @@ const ContactForm = () => {
                   </label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -93,12 +174,14 @@ const ContactForm = () => {
                     className="bg-background"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
                     Company Name
                   </label>
                   <Input
                     id="company"
+                    name="company"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="Your Company Ltd"
@@ -106,12 +189,28 @@ const ContactForm = () => {
                   />
                 </div>
               </div>
+
+              <div>
+                <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
+                  Discount Code
+                </label>
+                <Input
+                  id="discountCode"
+                  name="discountCode"
+                  value={formData.discountCode}
+                  onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
+                  placeholder="If you have one, enter your discount code"
+                  className="bg-background"
+                />
+              </div>
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                   How can we help? *
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -120,8 +219,9 @@ const ContactForm = () => {
                   className="bg-background resize-none"
                 />
               </div>
-              <Button 
-                type="submit" 
+
+              <Button
+                type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6"
               >
@@ -137,71 +237,74 @@ const ContactForm = () => {
             </form>
           </div>
 
-          <div className="space-y-8">
+          {/* Right column - Contact Info & Quick Quote Guide */}
+          <div className="space-y-6">
+            {/* Contact Information */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
               <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
                 Contact Information
               </h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="space-y-4">
+                <a
+                  href="tel:07845468030"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Phone</h4>
-                    <a href="tel:02012345678" className="text-primary hover:underline text-lg font-semibold">
-                      020 1234 5678
-                    </a>
+                    <p className="text-sm text-muted-foreground">Phone</p>
+                    <p className="font-medium">07845 468030</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                </a>
+                <a
+                  href="mailto:will@croydonpat.co.uk"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Email</h4>
-                    <a href="mailto:info@croydonpat.co.uk" className="text-primary hover:underline text-lg">
-                      info@croydonpat.co.uk
-                    </a>
+                    <p className="text-sm text-muted-foreground">Email</p>
+                    <p className="font-medium">will@croydonpat.co.uk</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                </a>
+                <div className="flex items-center gap-4 text-foreground">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">Service Area</h4>
-                    <p className="text-muted-foreground">
-                      Croydon, Sutton, Bromley & surrounding areas
-                    </p>
+                    <p className="text-sm text-muted-foreground">Service Area</p>
+                    <p className="font-medium">Croydon & South London</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-secondary rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-secondary-foreground mb-4 font-heading">
+            {/* Quick Quote Guide */}
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+              <h3 className="text-xl font-semibold text-foreground mb-4 font-heading">
                 Quick Quote Guide
               </h3>
-              <p className="text-secondary-foreground/90 mb-4">
-                To help us provide an accurate quote, please include:
+              <p className="text-muted-foreground text-sm mb-4">
+                To provide an accurate quote, please include:
               </p>
-              <ul className="space-y-2 text-secondary-foreground/90">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-primary rounded-full" />
-                  Approximate number of appliances
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Number of items to be tested
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-primary rounded-full" />
-                  Type of premises (office, shop, etc.)
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Type of business/premises
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-primary rounded-full" />
-                  Preferred date and time
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Preferred testing date(s)
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-primary rounded-full" />
-                  Your location/postcode
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Location/postcode
                 </li>
               </ul>
             </div>

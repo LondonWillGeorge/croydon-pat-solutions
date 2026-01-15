@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle2, Clock } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpeg";
+import heroBackground from "@/assets/Will_PAT_meter_photo_adobe_adjusted.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -11,11 +11,21 @@ const Hero = () => {
     <section className="relative overflow-hidden bg-background">
       <div className="flex flex-col lg:flex-row min-h-[600px]">
         {/* Left side - Text content on plain background */}
-        <div className="flex-1 flex items-center py-16 lg:py-20 px-4 lg:px-12">
+        <div className="flex-1 flex items-center pt-6 pb-8 lg:py-20 px-4 lg:px-12">
           <div className="max-w-xl">
             <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-secondary mb-6 font-heading animate-fade-up">
               Professional PAT Testing in <span className="text-primary">Croydon</span> and Surrounding Areas
             </h1>
+
+            {/* Mobile image - shown only on mobile, right after title */}
+            <div className="lg:hidden relative h-[250px] w-full mb-6 rounded-lg overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${heroBackground})` }}
+              />
+              <div className="absolute inset-0 bg-amber-900/20" />
+            </div>
+
             <p className="text-lg md:text-xl text-secondary/80 mb-8 animate-fade-up animation-delay-100">
               Keep your workplace safe and compliant with our expert Portable Appliance Testing services. Fast, reliable, and competitively priced.
             </p>
@@ -55,16 +65,14 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right side - Image */}
-        <div className="flex-1 relative min-h-[300px] lg:min-h-full">
+        {/* Right side - Image (desktop only) */}
+        <div className="hidden lg:block flex-1 relative min-h-[300px] lg:min-h-full">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${heroBackground})` }}
           />
           {/* Warm tint overlay */}
           <div className="absolute inset-0 bg-amber-900/20" />
-          {/* Left edge fade to blend with text section */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent lg:w-32" />
         </div>
       </div>
     </section>
