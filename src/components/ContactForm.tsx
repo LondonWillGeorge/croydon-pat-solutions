@@ -81,146 +81,220 @@ const ContactForm = () => {
       <div className="container mx-auto px-4">
         {/* ...your existing layout... */}
 
-        <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
-          <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
-            Send us a message
-          </h3>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Left column - Form */}
+          <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+            <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
+              Send us a message
+            </h3>
 
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            {/* Required for Netlify forms */}
-            <input type="hidden" name="form-name" value="contact" />
-
-            {/* Honeypot (hidden from humans) */}
-            <p className="hidden">
-              <label>
-                Don’t fill this out:{" "}
-                <input
-                  name="bot-field"
-                  value={formData.botField}
-                  onChange={(e) => setFormData({ ...formData, botField: e.target.value })}
-                />
-              </label>
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                  Your Name *
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Smith"
-                  className="bg-background"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email Address *
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@company.com"
-                  className="bg-background"
-                />
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                  Phone Number
-                </label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="020 1234 5678"
-                  className="bg-background"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                  Company Name
-                </label>
-                <Input
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  placeholder="Your Company Ltd"
-                  className="bg-background"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
-                Discount Code
-              </label>
-              <Input
-                id="discountCode"
-                name="discountCode"
-                value={formData.discountCode}
-                onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
-                placeholder="If you have one, enter your discount code"
-                className="bg-background"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                How can we help? *
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                required
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Tell us about your PAT testing requirements..."
-                rows={5}
-                className="bg-background resize-none"
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6"
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              className="space-y-5"
             >
-              {isSubmitting ? (
-                "Sending..."
-              ) : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </>
-              )}
-            </Button>
-          </form>
-        </div>
+              {/* Required for Netlify forms */}
+              <input type="hidden" name="form-name" value="contact" />
 
-        {/* ...rest of your right-hand info card... */}
+              {/* Honeypot (hidden from humans) */}
+              <p className="hidden">
+                <label>
+                  Don't fill this out:{" "}
+                  <input
+                    name="bot-field"
+                    value={formData.botField}
+                    onChange={(e) => setFormData({ ...formData, botField: e.target.value })}
+                  />
+                </label>
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Your Name *
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="John Smith"
+                    className="bg-background"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    Email Address *
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john@company.com"
+                    className="bg-background"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    Phone Number
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="020 1234 5678"
+                    className="bg-background"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                    Company Name
+                  </label>
+                  <Input
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    placeholder="Your Company Ltd"
+                    className="bg-background"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
+                  Discount Code
+                </label>
+                <Input
+                  id="discountCode"
+                  name="discountCode"
+                  value={formData.discountCode}
+                  onChange={(e) => setFormData({ ...formData, discountCode: e.target.value })}
+                  placeholder="If you have one, enter your discount code"
+                  className="bg-background"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  How can we help? *
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Tell us about your PAT testing requirements..."
+                  rows={5}
+                  className="bg-background resize-none"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6"
+              >
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Message
+                  </>
+                )}
+              </Button>
+            </form>
+          </div>
+
+          {/* Right column - Contact Info & Quick Quote Guide */}
+          <div className="space-y-6">
+            {/* Contact Information */}
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+              <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
+                Contact Information
+              </h3>
+              <div className="space-y-4">
+                <a
+                  href="tel:07845468030"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Phone</p>
+                    <p className="font-medium">07845 468030</p>
+                  </div>
+                </a>
+                <a
+                  href="mailto:will@croydonpat.co.uk"
+                  className="flex items-center gap-4 text-foreground hover:text-primary transition-colors"
+                >
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Email</p>
+                    <p className="font-medium">will@croydonpat.co.uk</p>
+                  </div>
+                </a>
+                <div className="flex items-center gap-4 text-foreground">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Service Area</p>
+                    <p className="font-medium">Croydon & South London</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Quote Guide */}
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+              <h3 className="text-xl font-semibold text-foreground mb-4 font-heading">
+                Quick Quote Guide
+              </h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                To provide an accurate quote, please include:
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Number of items to be tested
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Type of business/premises
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Preferred testing date(s)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  Location/postcode
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
