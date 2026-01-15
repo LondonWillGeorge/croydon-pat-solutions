@@ -1,20 +1,33 @@
-import { Award, ThumbsUp, Clock, PoundSterling } from "lucide-react";
+import { Award, ThumbsUp, PoundSterling, Shield } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const features = [
   {
     icon: Award,
-    title: "Certified & Insured",
-    description: "Fully qualified engineers with comprehensive public liability insurance for your peace of mind."
+    title: "Professionally Certified",
+    description: "Fully qualified engineers with industry-recognized certifications.",
+    hasPdf: true,
+    pdfPath: "/documents/certification.pdf",
+    dialogTitle: "Professional Certification",
+  },
+  {
+    icon: Shield,
+    title: "Professionally Insured",
+    description: "Comprehensive public liability insurance for your peace of mind.",
+    hasPdf: true,
+    pdfPath: "/documents/insurance.pdf",
+    dialogTitle: "Insurance Certificate",
   },
   {
     icon: ThumbsUp,
     title: "No Hidden Costs",
     description: "Transparent pricing with no call-out fees. You only pay for what you need."
-  },
-  {
-    icon: Clock,
-    title: "Flexible Scheduling",
-    description: "We work around your business hours to minimize disruption. Evening and weekend slots available."
   },
   {
     icon: PoundSterling,
@@ -41,15 +54,43 @@ const About = () => {
 
             <div className="grid sm:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                    <feature.icon className="w-6 h-6 text-primary" />
+                feature.hasPdf ? (
+                  <Dialog key={index}>
+                    <DialogTrigger asChild>
+                      <button className="flex gap-4 text-left hover:bg-accent/50 rounded-lg p-2 -m-2 transition-colors cursor-pointer">
+                        <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                          <feature.icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1 underline decoration-primary decoration-2 underline-offset-2">{feature.title}</h3>
+                          <p className="text-sm text-muted-foreground">{feature.description}</p>
+                        </div>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[90vh]">
+                      <DialogHeader>
+                        <DialogTitle>{feature.dialogTitle}</DialogTitle>
+                      </DialogHeader>
+                      <div className="w-full h-[70vh] mt-4">
+                        <iframe
+                          src={feature.pdfPath}
+                          className="w-full h-full border-0 rounded-lg"
+                          title={feature.dialogTitle}
+                        />
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                ) : (
+                  <div key={index} className="flex gap-4">
+                    <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
-                  </div>
-                </div>
+                )
               ))}
             </div>
           </div>
