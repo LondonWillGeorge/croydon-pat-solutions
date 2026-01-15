@@ -311,27 +311,27 @@ const ContactForm = () => {
 
             {/* Quick Quote Guide */}
             <div className="bg-secondary rounded-2xl p-8 border border-border shadow-lg">
-              <h3 className="text-xl font-semibold text-foreground mb-4 font-heading">
+              <h3 className="text-xl font-semibold text-secondary-foreground mb-4 font-heading">
                 Quick Quote Guide
               </h3>
-              <p className="text-secondary text-sm mb-4">
+              <p className="text-secondary-foreground text-sm mb-4">
                 To provide an accurate quote, please include:
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-secondary-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Number of items to be tested
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Type of business/premises
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Preferred testing date(s)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-secondary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Confirm location/postcode
                 </li>
               </ul>
