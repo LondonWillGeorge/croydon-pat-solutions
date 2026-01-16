@@ -22,13 +22,17 @@ const Header = () => {
             <button onClick={() => scrollToSection("services")} className="text-foreground hover:text-primary transition-colors font-medium">
               Services
             </button>
+            <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium">
+              Pricing
+            </button>
             <button onClick={() => scrollToSection("areas")} className="text-foreground hover:text-primary transition-colors font-medium">
               Areas Covered
             </button>
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">              Contact
+            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">
+              Contact
             </button>
           </nav>
 
@@ -57,13 +61,16 @@ const Header = () => {
             <button onClick={() => scrollToSection("services")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               Services
             </button>
+            <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
+              Pricing
+            </button>
             <button onClick={() => scrollToSection("areas")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               Areas Covered
             </button>
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               About Us
             </button>
-            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">           
+            <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium text-left">
               Contact
             </button>
             <a href="tel:07845468030" className="flex items-center gap-2 text-secondary font-semibold">
