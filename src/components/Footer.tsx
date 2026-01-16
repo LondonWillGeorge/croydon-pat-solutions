@@ -17,11 +17,11 @@ const Footer = () => {
   return (
     <footer className="bg-secondary py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8 w-full">
           <div>
             <img src={logo} alt="Croydon PAT Logo" className="h-12 mb-4 brightness-0 invert" />
             <p className="text-secondary-foreground/80 text-sm">
-              Professional PAT testing services for businesses in Croydon and South London. Keeping your workplace safe and compliant.
+              Professional PAT testing services for businesses in Croydon, Sutton, Bromley and surrounds. Keeping your workplace safe and compliant.
             </p>
           </div>
 
