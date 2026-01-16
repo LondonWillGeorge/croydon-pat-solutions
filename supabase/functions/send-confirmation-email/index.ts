@@ -61,7 +61,7 @@ You are receiving this email because you submitted an enquiry through our websit
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Croydon PAT <onboarding@resend.dev>",
+        from: "Croydon PAT <will@croydonpat.co.uk>",
         to: [email],
         subject: "Your Croydon PAT Enquiry - Confirmation",
         text: plainTextEmail,
