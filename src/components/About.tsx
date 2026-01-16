@@ -38,7 +38,7 @@ const features = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-background scroll-mt-32 md:scroll-mt-28">
+    <section id="about" className="py-20 bg-background scroll-mt-48 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
