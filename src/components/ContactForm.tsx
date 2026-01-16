@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 function encode(data: Record<string, string>) {
   return Object.keys(data)
@@ -14,6 +15,7 @@ function encode(data: Record<string, string>) {
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,6 +35,7 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSuccess(false);
 
     // If not on Netlify, show a message that forms only work on the live site
     if (!isNetlifySite) {
@@ -66,10 +69,24 @@ const ContactForm = () => {
         throw new Error(`Form submit failed: ${res.status}`);
       }
 
-      toast({
-        title: "Message sent!",
-        description: "Thanks — we'll get back to you shortly.",
-      });
+      // Send confirmation email via edge function
+      try {
+        await supabase.functions.invoke('send-confirmation-email', {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            message: formData.message,
+          },
+        });
+      } catch (emailError) {
+        // Don't fail the form submission if email fails
+        console.error('Confirmation email failed:', emailError);
+      }
+
+      // Show in-form success message
+      setIsSuccess(true);
 
       setFormData({
         name: "",
@@ -234,6 +251,17 @@ const ContactForm = () => {
                   </>
                 )}
               </Button>
+
+              {/* In-form success message */}
+              {isSuccess && (
+                <div className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg text-green-800 dark:text-green-200">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Message sent successfully!</p>
+                    <p className="text-sm">Thank you for your enquiry. We'll get back to you within 1 working day. A confirmation email has been sent to your inbox.</p>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
 
@@ -282,29 +310,29 @@ const ContactForm = () => {
             </div>
 
             {/* Quick Quote Guide */}
-            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
-              <h3 className="text-xl font-semibold text-foreground mb-4 font-heading">
+            <div className="bg-secondary rounded-2xl p-8 border border-border shadow-lg">
+              <h3 className="text-xl font-semibold text-secondary-foreground mb-4 font-heading">
                 Quick Quote Guide
               </h3>
-              <p className="text-muted-foreground text-sm mb-4">
+              <p className="text-secondary-foreground text-sm mb-4">
                 To provide an accurate quote, please include:
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-secondary-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Number of items to be tested
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Type of business/premises
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
+                  <span className="font-bold">•</span>
                   Preferred testing date(s)
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  Location/postcode
+                  <span className="font-bold">•</span>
+                  Confirm location/postcode
                 </li>
               </ul>
             </div>
