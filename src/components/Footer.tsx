@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary py-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 mb-8 w-full">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div>
             <img src={logo} alt="Croydon PAT Logo" className="h-12 mb-4 brightness-0 invert" />
             <p className="text-secondary-foreground/80 text-sm">
@@ -25,7 +25,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
+          <div className="md:justify-self-end">
             <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Contact Me</h4>
             <div className="space-y-3">
               <a href="tel:07845468030" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
