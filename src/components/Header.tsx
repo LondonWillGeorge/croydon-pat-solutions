@@ -26,7 +26,7 @@ const Header = () => {
               Areas Covered
             </button>
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
-              About Us
+              About Me
             </button>
             <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium">
               Pricing

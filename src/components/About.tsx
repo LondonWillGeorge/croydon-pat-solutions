@@ -46,10 +46,10 @@ const About = () => {
               Why Choose Croydon PAT?
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              We're a local PAT testing company dedicated to helping businesses in Croydon and the surrounding areas stay safe and compliant. With years of experience and a commitment to excellent service, we make electrical safety testing simple and stress-free.
+              I'm Will Croxford, a local certified PAT tester, dedicated to helping businesses in Croydon and the surrounding areas stay safe and compliant. With a commitment to excellent service, I can make your electrical safety testing simple and stress-free.
             </p>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              PAT testing is a legal requirement for many businesses under the Electricity at Work Regulations 1989. Regular testing protects your employees, customers, and your business from electrical hazards.
+              PAT testing is an insurance or practical requirement for many businesses, related to the Electricity at Work Regulations 1989. Regular testing protects your employees, customers, and your business from electrical hazards.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">

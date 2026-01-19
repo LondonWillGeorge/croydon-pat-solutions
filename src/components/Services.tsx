@@ -5,7 +5,7 @@ const services = [
   {
     icon: Zap,
     title: "PAT Testing",
-    description: "Comprehensive portable appliance testing for all your electrical equipment. We test and certify kettles, computers, power tools, and more."
+    description: "Comprehensive portable appliance testing for all your electrical equipment. I test and certify kettles, computers, power tools, and more."
   },
   {
     icon: Building2,
@@ -40,10 +40,10 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 font-heading">
-            Our PAT Testing Services
+            My PAT Testing Services
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            We offer comprehensive electrical safety testing to keep your business compliant and your employees safe.
+            I offer comprehensive electrical safety testing to keep your business compliant and your employees safe.
           </p>
         </div>
 
