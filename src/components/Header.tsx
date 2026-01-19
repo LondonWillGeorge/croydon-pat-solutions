@@ -22,14 +22,14 @@ const Header = () => {
             <button onClick={() => scrollToSection("services")} className="text-foreground hover:text-primary transition-colors font-medium">
               Services
             </button>
-            <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium">
-              Pricing
-            </button>
             <button onClick={() => scrollToSection("areas")} className="text-foreground hover:text-primary transition-colors font-medium">
               Areas Covered
             </button>
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
+            </button>
+            <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium">
+              Pricing
             </button>
             <button onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary transition-colors font-medium">
               Contact
