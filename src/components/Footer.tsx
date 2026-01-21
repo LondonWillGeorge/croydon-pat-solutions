@@ -39,7 +39,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
                 will@croydonpat.co.uk
               </a>
-              <img src={will} alt="Will @ Croydon PAT Photo" className="h-15" />
+              <img src={will} alt="Will @ Croydon PAT Photo" className="h-20" />
             </div>
           </div>
         </div>
