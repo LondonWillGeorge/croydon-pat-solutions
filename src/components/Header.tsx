@@ -15,7 +15,12 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border overflow-x-hidden">
       <div className="container mx-auto px-4 py-4 max-w-full">
         <div className="flex items-center justify-between">
-          <img src={logo} alt="Croydon PAT Logo" className="h-14 sm:h-16 md:h-[5.25rem]" />
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="focus:outline-none"
+          >
+            <img src={logo} alt="Croydon PAT Logo" className="h-14 sm:h-16 md:h-[5.25rem]" />
+          </button>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
