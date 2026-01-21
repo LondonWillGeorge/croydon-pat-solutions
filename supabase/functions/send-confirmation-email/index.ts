@@ -2,6 +2,8 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
+const currentYear = new Date().getFullYear();
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -30,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
 
 Thank you for contacting Croydon PAT Testing Services.
 
-We have received your enquiry and will get back to you within 1 working day.
+I have received your enquiry and should get back to you within 1 working day.
 
 Here is a summary of your message:
 ---
@@ -43,15 +45,19 @@ Your Message:
 ${message}
 ---
 
-If you have any urgent questions, please call us on 07845 468030.
+If you have any urgent questions, please call on 07845 468030.
 
 Best regards,
+
 Will
-Croydon PAT Testing Services
+Croydon PAT
 www.croydonpat.co.uk
 
+©${currentYear} MagicMyData Ltd trading as Croydon PAT. All rights reserved.
+A company registered in England and Wales. Company No. 16586444
+
 ---
-You are receiving this email because you submitted an enquiry through our website.
+You are receiving this email because someone submitted an enquiry through the Croydon PAT website, using this email address.
 `;
 
     const res = await fetch("https://api.resend.com/emails", {

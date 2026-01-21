@@ -20,7 +20,7 @@ const services = [
   {
     icon: FileText,
     title: "Asset Register",
-    description: "Complete inventory management with unique asset IDs. Track all your electrical equipment and maintain compliance records."
+    description: "Unique asset IDs provided. Track all your electrical equipment and maintain compliance records."
   },
   {
     icon: Wrench,

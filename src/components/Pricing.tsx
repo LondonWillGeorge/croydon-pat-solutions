@@ -10,7 +10,7 @@ const Pricing = () => {
             Transparent Pricing
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            At your business premises - parking included! All tests include easy-read PDF results emailed to you within 24 hours.
+            At your business premises - parking included.<br/>All tests include easy-read PDF results emailed to you within 24 hours.
           </p>
         </div>
 
@@ -39,8 +39,8 @@ const Pricing = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                 <Building2 className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle className="text-xl font-heading">Shops, Offices, Warehouses</CardTitle>
-              <p className="text-sm text-muted-foreground">Musicians and Mobile DJs</p>
+              <CardTitle className="text-xl font-heading">Shops, Offices, Warehouses,<br/>
+              Musicians and Mobile DJs</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">

@@ -23,9 +23,6 @@ const AreasServed = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 font-heading">
             Areas I Cover
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Providing professional PAT testing services across South London and Surrey
-          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

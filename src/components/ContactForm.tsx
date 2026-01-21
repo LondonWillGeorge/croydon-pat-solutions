@@ -333,7 +333,7 @@ const ContactForm = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Service Area</p>
                     <p onClick={() => document.getElementById("areas")?.scrollIntoView({ behavior: "smooth" })} className="text-primary font-medium hover:underline">
-                      See Areas Covered above.</p>
+                      See Areas Covered above</p>
                   </div>
                 </div>
               </div>
