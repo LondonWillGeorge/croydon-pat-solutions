@@ -11,7 +11,7 @@ const features = [
   {
     icon: Award,
     title: "Professionally Certified",
-    description: "Click to view - I have been trained by a former member of UK Standards Committee.",
+    description: "Click to view - I have been trained by Tim James, a former member of the UK Code of Practice Committee.",
     hasPdf: true,
     pdfPath: "/documents/certification.pdf",
     dialogTitle: "Professional Certification",
