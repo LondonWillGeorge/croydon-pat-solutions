@@ -100,7 +100,7 @@ const ContactForm = () => {
     } catch (err) {
       toast({
         title: "Couldn't send message",
-        description: "Please try again, or email us directly.",
+        description: "Please try again, or email me directly.",
         variant: "destructive",
       });
     } finally {
@@ -109,7 +109,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted scroll-mt-32 md:scroll-mt-28">
+    <section id="contact" className="py-20 bg-muted scroll-mt-48 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         {/* ...your existing layout... */}
 
@@ -117,7 +117,7 @@ const ContactForm = () => {
           {/* Left column - Form */}
           <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
             <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
-              Send us a message
+              Send me a message
             </h3>
 
             <form
@@ -179,12 +179,13 @@ const ContactForm = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number
+                    Phone Number *
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
+                    required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="020 1234 5678"
@@ -223,7 +224,7 @@ const ContactForm = () => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  How can we help? *
+                  How can I help? *
                 </label>
                 <Textarea
                   id="message"
@@ -231,7 +232,7 @@ const ContactForm = () => {
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us about your PAT testing requirements..."
+                  placeholder="Tell me about your PAT testing requirements..."
                   rows={5}
                   className="bg-background resize-none"
                 />
@@ -258,7 +259,7 @@ const ContactForm = () => {
                   <CheckCircle className="w-5 h-5 flex-shrink-0" />
                   <div>
                     <p className="font-semibold">Message sent successfully!</p>
-                    <p className="text-sm">Thank you for your enquiry. We'll get back to you within 1 working day. A confirmation email has been sent to your inbox.</p>
+                    <p className="text-sm">Thank you for your enquiry. I will usually get back to you within 1 working day. A confirmation email has been sent to your inbox.</p>
                   </div>
                 </div>
               )}
@@ -267,6 +268,34 @@ const ContactForm = () => {
 
           {/* Right column - Contact Info & Quick Quote Guide */}
           <div className="space-y-6">
+            {/* Quick Quote Guide - shown first on mobile */}
+            <div className="bg-secondary rounded-2xl p-8 border border-border shadow-lg order-first lg:order-last">
+              <h3 className="text-xl font-semibold text-secondary-foreground mb-4 font-heading">
+                Quick Quote Guide
+              </h3>
+              <p className="text-secondary-foreground text-sm mb-4">
+                To provide an accurate quote, please include:
+              </p>
+              <ul className="space-y-2 text-sm text-secondary-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="font-bold">•</span>
+                  Number of items to be tested
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold">•</span>
+                  Type of business/premises
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold">•</span>
+                  Preferred testing date(s)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold">•</span>
+                  Confirm location/postcode
+                </li>
+              </ul>
+            </div>
+
             {/* Contact Information */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
               <h3 className="text-xl font-semibold text-foreground mb-6 font-heading">
@@ -303,38 +332,11 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Service Area</p>
-                    <p className="font-medium">Croydon & South London</p>
+                    <p onClick={() => document.getElementById("areas")?.scrollIntoView({ behavior: "smooth" })} className="text-primary font-medium hover:underline">
+                      See Areas Covered above.</p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Quick Quote Guide */}
-            <div className="bg-secondary rounded-2xl p-8 border border-border shadow-lg">
-              <h3 className="text-xl font-semibold text-secondary-foreground mb-4 font-heading">
-                Quick Quote Guide
-              </h3>
-              <p className="text-secondary-foreground text-sm mb-4">
-                To provide an accurate quote, please include:
-              </p>
-              <ul className="space-y-2 text-sm text-secondary-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="font-bold">•</span>
-                  Number of items to be tested
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-bold">•</span>
-                  Type of business/premises
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-bold">•</span>
-                  Preferred testing date(s)
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-bold">•</span>
-                  Confirm location/postcode
-                </li>
-              </ul>
             </div>
           </div>
         </div>

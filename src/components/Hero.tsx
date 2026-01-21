@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="flex-1 flex items-center pt-6 pb-8 lg:py-20 px-4 lg:px-12">
           <div className="max-w-xl">
             <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-secondary mb-6 font-heading animate-fade-up">
-              Professional PAT Testing in <span className="text-primary">Croydon</span> and Surrounding Areas
+              Professional PAT Testing in <span className="text-primary">Croydon, Sutton, Bromley</span> and Surrounding Areas
             </h1>
 
             {/* Mobile image - shown only on mobile, right after title */}
@@ -27,26 +27,20 @@ const Hero = () => {
             </div>
 
             <p className="text-lg md:text-xl text-secondary/80 mb-8 animate-fade-up animation-delay-100">
-              Keep your workplace safe and compliant with our expert Portable Appliance Testing services. Fast, reliable, and competitively priced.
+              Keep your workplace safe and compliant with my expert Portable Appliance Testing services.<br/>
+              Fast, reliable, and competitively priced.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10 animate-fade-up animation-delay-200">
               <Button 
                 onClick={scrollToContact}
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg px-8 py-6 animate-pulse-glow"
+                size="lg"
+                className="w-full sm:flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg px-8 py-6 animate-pulse-glow"
               >
                 Get a Free Quote
               </Button>
-              <Button 
-                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-                size="lg" 
-                variant="outline"
-                className="border-2 border-secondary/30 text-secondary hover:bg-secondary/10 font-semibold text-lg px-8 py-6"
-              >
-                Our Services
-              </Button>
             </div>
+
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 animate-fade-up animation-delay-300">
               <div className="flex items-center gap-3 bg-secondary/10 rounded-lg p-3">

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-20 bg-muted">
+    <section id="pricing" className="py-20 bg-muted scroll-mt-32 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 font-heading">

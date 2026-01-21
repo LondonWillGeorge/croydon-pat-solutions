@@ -21,38 +21,15 @@ const Footer = () => {
           <div>
             <img src={logo} alt="Croydon PAT Logo" className="h-12 mb-4 brightness-0 invert" />
             <p className="text-secondary-foreground/80 text-sm">
-              Professional PAT testing services for businesses in Croydon and South London. Keeping your workplace safe and compliant.
+              Professional PAT testing services for businesses in Croydon, Sutton, Bromley and surrounds. Keeping your workplace safe and compliant.
             </p>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <button onClick={() => scrollToSection("services")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
-                  Our Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection("areas")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
-                  Areas Covered
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection("about")} className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
-                  About PAT Testing
-                </button>
-              </li>
-              <li>
-                <a href="mailto:will@croydonpat.co.uk" className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
-                  Get a Quote
-                </a>
-              </li>
-            </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Contact Us</h4>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Contact Me</h4>
             <div className="space-y-3">
               <a href="tel:07845468030" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                 <Phone className="w-4 h-4" />
@@ -68,7 +45,8 @@ const Footer = () => {
 
         <div className="border-t border-secondary-foreground/20 pt-8 text-center">
           <p className="text-secondary-foreground/60 text-sm">
-            © {currentYear} Croydon PAT. All rights reserved.
+            © {currentYear} MagicMyData Ltd trading as Croydon PAT. All rights reserved.<br/>
+            A company registered in England and Wales. Company No. 16586444
           </p>
         </div>
       </div>
