@@ -109,7 +109,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted scroll-mt-48 md:scroll-mt-28">
+    <section id="contact" className="py-20 bg-muted scroll-mt-24 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         {/* ...your existing layout... */}
 
