@@ -7,7 +7,25 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    // On mobile, if the hamburger menu is open, close it *first* so the sticky
+    // header height shrinks before we calculate the final scroll position.
+    if (!isDesktop && mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      // Wait a couple of frames for layout to settle after the menu collapses.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+      return;
+    }
+
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
     setMobileMenuOpen(false);
   };
 
