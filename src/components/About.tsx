@@ -11,7 +11,7 @@ const features = [
   {
     icon: Award,
     title: "Professionally Certified",
-    description: "Click to view - I have been trained by a former member of UK Standards Committee.",
+    description: "Click to view - I have been trained by Tim James, a former member of the UK Code of Practice Committee.",
     hasPdf: true,
     pdfPath: "/documents/certification.pdf",
     dialogTitle: "Professional Certification",
@@ -38,7 +38,7 @@ const features = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-background scroll-mt-48 md:scroll-mt-28">
+    <section id="about" className="py-20 bg-background scroll-mt-24 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -103,6 +103,7 @@ const About = () => {
               <p>
                 <strong>Portable Appliance Testing (PAT)</strong> is the examination of electrical appliances and equipment to ensure they are safe to use.
               </p>
+              <p>Officially, it is also known as EET (Electrical Equipment Testing), according to changes made in 2020 in the 5th Edition of the IET Code of Practice for In-Service Inspection and Testing of Electrical Equipment. The only problem with this is most people still use the phrase "PAT Testing", and even today few are aware of this name change!</p>
               <p>
                 The test includes a visual inspection and electrical tests using specialist PAT testing equipment. Appliances that pass receive a dated label, and you'll receive a full report of all items tested.
               </p>
@@ -111,7 +112,7 @@ const About = () => {
               </p>
               <ul className="list-disc list-inside space-y-2 ml-2">
                 <li>Computers and monitors</li>
-                <li>Kettles and microwaves</li>
+                <li>Kettles, fridges and microwaves</li>
                 <li>Extension leads</li>
                 <li>Printers and photocopiers</li>
                 <li>Power tools</li>

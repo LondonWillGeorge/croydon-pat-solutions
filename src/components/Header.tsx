@@ -7,7 +7,25 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    // On mobile, if the hamburger menu is open, close it *first* so the sticky
+    // header height shrinks before we calculate the final scroll position.
+    if (!isDesktop && mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      // Wait a couple of frames for layout to settle after the menu collapses.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+      return;
+    }
+
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
     setMobileMenuOpen(false);
   };
 
@@ -15,7 +33,12 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border overflow-x-hidden">
       <div className="container mx-auto px-4 py-4 max-w-full">
         <div className="flex items-center justify-between">
-          <img src={logo} alt="Croydon PAT Logo" className="h-14 sm:h-16 md:h-[5.25rem]" />
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="focus:outline-none"
+          >
+            <img src={logo} alt="Croydon PAT Logo" className="h-14 sm:h-16 md:h-[5.25rem]" />
+          </button>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -26,7 +49,7 @@ const Header = () => {
               Areas Covered
             </button>
             <button onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary transition-colors font-medium">
-              About Me
+              About Croydon PAT
             </button>
             <button onClick={() => scrollToSection("pricing")} className="text-foreground hover:text-primary transition-colors font-medium">
               Pricing

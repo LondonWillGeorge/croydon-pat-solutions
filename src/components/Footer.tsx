@@ -1,4 +1,5 @@
 import logo from "@/assets/logo-croydonpat.png";
+import will from "@/assets/Will_CroydonPAT.jpg";
 import { Phone, Mail } from "lucide-react";
 
 const Footer = () => {
@@ -29,7 +30,6 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-secondary-foreground mb-4 font-heading">Contact Me</h4>
             <div className="space-y-3">
               <a href="tel:07845468030" className="flex items-center gap-2 text-secondary-foreground/80 hover:text-primary transition-colors text-sm">
                 <Phone className="w-4 h-4" />
@@ -39,6 +39,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
                 will@croydonpat.co.uk
               </a>
+              <img src={will} alt="Will @ Croydon PAT Photo" className="h-20" />
             </div>
           </div>
         </div>

@@ -17,15 +17,12 @@ const areas = [
 
 const AreasServed = () => {
   return (
-    <section id="areas" className="py-20 bg-muted scroll-mt-48 md:scroll-mt-28">
+    <section id="areas" className="py-20 bg-muted scroll-mt-24 md:scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 font-heading">
             Areas I Cover
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Providing professional PAT testing services across South London and Surrey
-          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
