@@ -179,13 +179,12 @@ const ContactForm = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number *
+                    Phone Number
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
-                    required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="020 1234 5678"
@@ -208,7 +207,7 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <label htmlFor="discountCode" className="block text-sm font-medium text-foreground mb-2">
                   Discount Code
                 </label>
@@ -220,7 +219,7 @@ const ContactForm = () => {
                   placeholder="If you have one, enter your discount code"
                   className="bg-background"
                 />
-              </div>
+              </div> */}
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
@@ -232,7 +231,7 @@ const ContactForm = () => {
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell me about your PAT testing requirements..."
+                  placeholder={ "Please let me know your PAT testing questions or requirements\n- if you prefer text, email or call..." }
                   rows={5}
                   className="bg-background resize-none"
                 />
